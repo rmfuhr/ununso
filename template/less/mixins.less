@@ -1,0 +1,63 @@
+
+
+/*==============================================
+    Mixins
+===============================================*/
+
+.transition (@transition: 0.4s, @delay: 0s) {
+    -webkit-transition: all @transition ease-in-out @delay;
+       -moz-transition: all @transition ease-in-out @delay;
+         -o-transition: all @transition ease-in-out @delay;
+            transition: all @transition ease-in-out @delay;
+}
+
+.transitions (@property: all, @duration: 0.4s, @function: ease, @delay: 0s) {
+    -webkit-transition: @property @duration @function @delay;
+       -moz-transition: @property @duration @function @delay;
+        -ms-transition: @property @duration @function @delay;
+         -o-transition: @property @duration @function @delay;
+}
+
+.transition-delay (@value) {
+    -webkit-transition-delay: @value;
+       -moz-transition-delay: @value;
+        -ms-transition-delay: @value;
+         -o-transition-delay: @value;
+}
+
+.transform (@scaleY) {
+    -webkit-transform: @scaleY;
+       -moz-transform: @scaleY;
+        -ms-transform: @scaleY;
+         -o-transform: @scaleY;
+            transform: @scaleY;
+}
+
+.transformOrigin (@origin) {
+    -webkit-transform-origin: @origin;
+       -moz-transform-origin: @origin;
+        -ms-transform-origin: @origin;
+         -o-transform-origin: @origin;
+            transform-origin: @origin;
+}
+
+.backfaceVisibility (@value) {
+    -webkit-backface-visibility: @value;
+       -moz-backface-visibility: @value;
+            backface-visibility: @value;
+}
+
+.perspective (@value) {
+    -webkit-perspective: @value;
+       -moz-perspective: @value;
+            perspective: @value;
+}
+
+.at2x(@path, @w: auto, @h: auto) {
+    @at2x_path: ~`"@{path}".split('.').slice(0, "@{path}".split('.').length - 1).join(".") + "@2x" + "." + "@{path}".split('.')["@{path}".split('.').length - 1]`;
+
+    @media all and (-webkit-min-device-pixel-ratio : 1.5) {
+        background-image: url(@at2x_path);
+        background-size: @w @h;
+    }  
+}
